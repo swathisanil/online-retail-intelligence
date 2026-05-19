@@ -101,7 +101,7 @@ The UK dominates, contributing the vast majority of total revenue. Among interna
 
 **Which products drive the most revenue?**
 
-![Top Products](images/top_10_product.png)
+![Top Products](images/to_10_product.png)
 
 The top 10 products are dominated by decorative and gift items — consistent with a retailer serving both retail consumers and wholesale buyers. Each product bar includes its percentage share of total £10.24M revenue for immediate commercial context.
 
