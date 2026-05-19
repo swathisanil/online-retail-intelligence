@@ -1,6 +1,3 @@
-Here you go:
-
-
 # Dataset Information
 
 **Download:** [UCI Online Retail Dataset](https://archive.ics.uci.edu/dataset/352/online+retail)
