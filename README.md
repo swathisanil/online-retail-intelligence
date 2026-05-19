@@ -14,7 +14,7 @@
 
 ---
 
-## 📌 Business Problem
+## Business Problem
 
 A UK-based online retailer operating across **38 international markets** generates **£10.24M in annual revenue** — yet has no visibility into which customers drive that revenue, when and why they churn, which products to bundle, or what next quarter's sales will look like.
 
@@ -22,7 +22,7 @@ This project solves all of that. It delivers a **complete, production-grade busi
 
 ---
 
-## 📊 Key Results at a Glance
+## Key Results at a Glance
 
 | Metric | Value |
 |--------|-------|
@@ -38,7 +38,7 @@ This project solves all of that. It delivers a **complete, production-grade busi
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 online-retail-intelligence/
@@ -61,7 +61,7 @@ online-retail-intelligence/
 
 ---
 
-## 🔬 Full Analysis Breakdown
+##  Full Analysis Breakdown
 
 ### Stage 1 — Data Cleaning & Validation (Excel + Python)
 
@@ -277,7 +277,7 @@ A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for di
 
 ---
 
-## 💡 Consolidated Business Recommendations
+##  Consolidated Business Recommendations
 
 | Priority | Area | Recommendation | Impact |
 |----------|------|----------------|--------|
@@ -292,7 +292,7 @@ A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for di
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Tool | Purpose |
 |------|---------|
@@ -309,7 +309,7 @@ A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for di
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 ### Python Notebook
 ```bash
@@ -328,7 +328,7 @@ Place `online_retail_cleaned.csv` in MySQL's secure upload folder (`C:/ProgramDa
 
 ---
 
-## 📂 Dataset
+##  Dataset
 
 The raw dataset is not included due to file size (77.2 MB) and UCI licensing terms.
 
@@ -338,7 +338,7 @@ See `data/README.md` for full cleaning instructions and derived column definitio
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Swathi Anilkumar Sreelatha**  
 Data Analyst · Python · SQL · Power BI  
