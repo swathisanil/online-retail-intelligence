@@ -26,6 +26,3 @@ Tools Used:
 
 Note:
 The raw dataset is not uploaded to GitHub because the file is very large and repositories should stay lightweight.
-```
-
-Copy the whole thing, paste it into your `data/README.md` file, save, and you're done.
