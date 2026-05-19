@@ -12,15 +12,13 @@
 **Dataset:** UCI Online Retail | 522,360 transactions | Dec 2010 – Dec 2011 | 38 Countries  
 **Tools:** Python · MySQL 8.0 · Excel · Power BI · scikit-learn
 
----
 
 ## Business Problem
 
-A UK-based online retailer operating across **38 international markets** generates **£10.24M in annual revenue** — yet has no visibility into which customers drive that revenue, when and why they churn, which products to bundle, or what next quarter's sales will look like.
+A UK-based online retailer operating across **38 international markets** generates **£10.24M in annual revenue** ,  yet has no visibility into which customers drive that revenue, when and why they churn, which products to bundle, or what next quarter's sales will look like.
 
-This project solves all of that. It delivers a **complete, production-grade business intelligence pipeline** covering every layer of the analytics stack: raw data cleaning in Excel, SQL-based business querying with window functions, Python-driven EDA and machine learning, and Power BI dashboarding — with every finding translated into a concrete, prioritised business recommendation.
+This project solves all of that. It delivers a **complete, production-grade business intelligence pipeline** covering every layer of the analytics stack: raw data cleaning in Excel, SQL-based business querying with window functions, Python-driven EDA and machine learning, and Power BI dashboarding, with every finding translated into a concrete, prioritised business recommendation.
 
----
 
 ## Key Results at a Glance
 
@@ -36,11 +34,9 @@ This project solves all of that. It delivers a **complete, production-grade busi
 | Forecast Model R² Score | 0.894 (89.4% variance explained) |
 | Revenue Risk from 10% Champion Churn | ~£163,000 |
 
----
 
 ## Repository Structure
 
-```
 online-retail-intelligence/
 │
 ├── README.md
@@ -57,9 +53,7 @@ online-retail-intelligence/
 │
 └── data/
     └── README.md                    ← Dataset instructions and UCI download link
-```
 
----
 
 ##  Full Analysis Breakdown
 
@@ -81,8 +75,6 @@ The raw UCI dataset required structured cleaning before any analysis was possibl
 - Removed non-product operational entries: `POSTAGE`, `BANK CHARGES`, `MANUAL`, `CARRIAGE`, `AMAZON FEE`, `DOTCOM` — these are back-office records that inflate product revenue tables if left in
 
 > This integrated validation approach — checking duplicates, nulls, and dataset shape inline at each stage — reflects how production pipelines are built. Results are validated at every step rather than in an isolated QA block.
-
----
 
 ### Stage 2 — Revenue Analysis
 
@@ -106,7 +98,6 @@ The UK dominates, contributing the vast majority of total revenue. Among interna
 
 The top 10 products are dominated by decorative and gift items — consistent with a retailer serving both retail consumers and wholesale buyers. Each product bar includes its percentage share of total £10.24M revenue for immediate commercial context.
 
----
 
 ### Stage 3 — RFM Customer Segmentation (K-Means Clustering)
 
@@ -134,8 +125,6 @@ RFM (Recency, Frequency, Monetary) analysis is the industry-standard framework f
 
 > **Critical analytical note:** The Champion segment (13 accounts, avg spend £125,707) is not a retail loyalty cohort — it is a **wholesale/B2B segment**. Average basket sizes of 4,226 items per order and individual account spend between £168K–£279K confirm procurement-cycle purchasing, not consumer behaviour. Applying loyalty programmes or discount campaigns to these accounts would be commercially inappropriate. They require dedicated account management, volume-based pricing, and supply reliability — not retail CRM tools.
 
----
-
 ### Stage 4 — Cohort Retention Analysis
 
 Cohort analysis groups customers by their **first purchase month** and tracks what percentage return in each subsequent month. This is the most direct measure of customer loyalty available from transaction data alone.
@@ -153,8 +142,6 @@ Cohort analysis groups customers by their **first purchase month** and tracks wh
 
 This is a structural weakness in post-purchase engagement, not an acquisition problem. The business can generate first purchases efficiently, but lacks the lifecycle infrastructure to convert them into long-term customer relationships.
 
----
-
 ### Stage 5 — Basket Analysis by Customer Segment
 
 Average items per order broken down by RFM segment — validates the B2B nature of Champions and quantifies the cross-sell opportunity in the retail base.
@@ -170,8 +157,6 @@ The 23× difference in basket size between Champions and Hibernating customers c
 
 **Revenue concentration risk quantified:**
 A 10% churn rate across the 13 Champion accounts would result in an estimated **£163,000 revenue loss** (13 × 10% × £125,707 avg spend). This figure alone makes a compelling business case for dedicated account management investment.
-
----
 
 ### Stage 6 — Product Affinity Analysis
 
@@ -189,8 +174,6 @@ Identifies which products are **most frequently purchased together** in the same
 - **Jumbo Bag combinations** dominate the highest-frequency pairs — consistently purchased as a set
 - **Regency Teacup and Saucer collections** show strong co-purchase behaviour across colour variants — prime candidates for multi-pack or collection pricing
 - The consistent, repeatable pairing patterns make this data directly usable as input for a recommendation engine deployed on any e-commerce platform
-
----
 
 ### Stage 7 — Revenue Forecasting (Polynomial Regression)
 
@@ -217,8 +200,6 @@ A 3-month rolling average smooths short-term noise to reveal the underlying reve
 
 The model correctly captures the Q4 seasonal peak and projects continued growth into Q1 2012 — directly supporting inventory procurement timelines and campaign launch decisions.
 
----
-
 ### Stage 8 — Customer Conversion Funnel Analysis
 
 A five-stage purchase lifecycle funnel built in **Plotly** (`go.Funnel`) to quantify conversion rates at each stage and identify where revenue opportunity is being lost.
@@ -235,8 +216,6 @@ The funnel was exported as `funnel.html` for direct embedding in Power BI dashbo
 **Most actionable finding:**
 30.6% of repeat customers become high-value, but only 74.9% of high-value customers reach Champion status — meaning **25.1% of high-spending customers are not purchasing frequently or recently enough** to be classified as Champions. These are the highest-priority customers for retention investment: they already spend heavily, but their engagement signals are weakening before they reach their peak value potential.
 
----
-
 ### Stage 9 — Guest Customer Analysis
 
 Guest customers transact without registering — generating **£1.51M (14.7% of total revenue)** while remaining permanently invisible to every retention, loyalty, and remarketing system the business operates.
@@ -251,8 +230,6 @@ Guest customers transact without registering — generating **£1.51M (14.7% of 
 
 **Quantified conversion opportunity:**
 If just **20% of guest customers** could be converted to registered accounts at checkout, the business would gain visibility and retargetability over approximately **£302,000 in previously untrackable revenue** — enabling repeat purchase campaigns, churn prediction, and personalised marketing for those buyers.
-
----
 
 ### Stage 10 — SQL Business Intelligence (MySQL 8.0)
 
@@ -275,8 +252,6 @@ If just **20% of guest customers** could be converted to registered accounts at 
 
 A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for direct live connection to Power BI as a reporting data source.
 
----
-
 ##  Consolidated Business Recommendations
 
 | Priority | Area | Recommendation | Impact |
@@ -289,8 +264,6 @@ A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for di
 | 🟡 Medium | International Expansion | Increase marketing spend in Netherlands and Germany | Build on existing £285K and £229K bases |
 | 🟢 Low | At-Risk Reactivation | Targeted win-back campaigns with time-limited offers | Recover disengaging mid-tier customers |
 | 🟢 Low | Hibernating Customers | Low-cost reactivation; evaluate ROI before scaling | Avoid over-investing in low-probability recovery |
-
----
 
 ##  Tech Stack
 
@@ -307,7 +280,6 @@ A reusable `CREATE VIEW monthly_revenue_summary` is included — designed for di
 | Excel (openpyxl) | Initial data cleaning and feature engineering |
 | Power BI | Live dashboard connected to SQL view |
 
----
 
 ##  How to Run
 
