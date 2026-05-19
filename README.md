@@ -95,13 +95,13 @@ Revenue rises steeply from September 2011, peaking at approximately **£1.5M in 
 
 **Which markets matter most?**
 
-![Country Revenue](images/country_revenue.png)
+![Country Revenue](images/top_10.png)
 
 The UK dominates, contributing the vast majority of total revenue. Among international markets, **Netherlands (£285K)** and **Germany (£229K)** represent the strongest growth opportunities. Each bar label shows both the absolute revenue value and percentage share of total — making the chart immediately usable in an executive presentation.
 
 **Which products drive the most revenue?**
 
-![Top Products](images/top_products.png)
+![Top Products](images/top_10_product.png)
 
 The top 10 products are dominated by decorative and gift items — consistent with a retailer serving both retail consumers and wholesale buyers. Each product bar includes its percentage share of total £10.24M revenue for immediate commercial context.
 
@@ -119,7 +119,7 @@ RFM (Recency, Frequency, Monetary) analysis is the industry-standard framework f
 3. Applied the **Elbow Method** (k=1 to 10, plotting inertia at each step) to determine the optimal cluster count — confirmed at **k=4**
 4. Ran `KMeans(n_clusters=4, random_state=42)` and mapped clusters to business segment names based on relative centroid positioning in Recency and Monetary space
 
-![RFM Segmentation](images/rfm_scatter.png)
+![RFM Segmentation](images/rfm.png)
 
 **Segment outcomes:**
 
@@ -143,7 +143,7 @@ Cohort analysis groups customers by their **first purchase month** and tracks wh
 - Divided each row by its Month-0 baseline to convert counts into retention percentages
 - Rendered as a `seaborn` heatmap — darker blue = stronger retention
 
-![Cohort Retention](images/cohort_retention.png)
+![Cohort Retention](images/cohort.png)
 
 **Key finding:** The **December 2010 cohort** is the strongest performer, maintaining ~30% retention at Month 6 and ~50% at Month 12. Most later cohorts drop below 25% within the first few months — the majority of customers are **one-time buyers who never return**.
 
@@ -195,7 +195,7 @@ A 3-month rolling average smooths short-term noise to reveal the underlying reve
 - Trained `LinearRegression` on Dec 2010 – Nov 2011 data; December 2011 excluded to prevent incomplete month-end data from biasing the model
 - Projected 3 months forward (Jan–Mar 2012) with a ±5% confidence band rendered as a shaded fill
 
-![Revenue Forecast](images/revenue_forecast.png)
+![Revenue Forecast](images/forecast.png)
 
 **Model performance:**
 
