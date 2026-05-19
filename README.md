@@ -175,7 +175,7 @@ Identifies which products are **most frequently purchased together** in the same
 - Counted pair co-purchase frequencies using `collections.Counter`
 - Extracted and ranked the top 10 most frequent product pairs
 
-![Product Affinity](images/product_affinity.png)
+![Product Affinity](images/affinity.png)
 
 **Key findings:**
 - **Jumbo Bag combinations** dominate the highest-frequency pairs — consistently purchased as a set
