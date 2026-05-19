@@ -37,24 +37,31 @@ This project solves all of that. It delivers a **complete, production-grade busi
 
 ## Repository Structure
 
+```text
 online-retail-intelligence/
 │
 ├── README.md
 ├── .gitignore
 │
 ├── notebooks/
-│   └── retail_analysis.ipynb        ← Full Python analysis (10 sections + ML)
+│   └── retail_analysis.ipynb
 │
 ├── sql/
-│   └── retail_analysis.sql          ← 12 business queries using window functions
+│   └── retail_analysis.sql
 │
 ├── report/
-│   └── retail_analysis.pdf          ← Compiled report with charts and findings
+│   └── retail_analysis.pdf
+│
+├── images/
+│   ├── 01_Total_revenue.jpg
+│   ├── 02_revenue_split.jpg
+│   ├── 03_Executive_summary.png
+│   ├── 04_customer_intelligence.png
+│   └── 05_product_performance.png
 │
 └── data/
-    └── README.md                    ← Dataset instructions and UCI download link
-
-
+    └── README.md
+```
 ##  Full Analysis Breakdown
 
 ### Stage 1 — Data Cleaning & Validation (Excel + Python)
