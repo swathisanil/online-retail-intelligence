@@ -64,7 +64,7 @@ online-retail-intelligence/
 ```
 ##  Full Analysis Breakdown
 
-### Stage 1 — Data Cleaning & Validation (Excel + Python)
+###1 — Data Cleaning & Validation (Excel + Python)
 
 The raw UCI dataset required structured cleaning before any analysis was possible. This was performed in two stages:
 
@@ -83,7 +83,7 @@ The raw UCI dataset required structured cleaning before any analysis was possibl
 
 > This integrated validation approach — checking duplicates, nulls, and dataset shape inline at each stage — reflects how production pipelines are built. Results are validated at every step rather than in an isolated QA block.
 
-### Stage 2 — Revenue Analysis
+###2 — Revenue Analysis
 
 Three core business questions answered:
 
@@ -106,7 +106,7 @@ The UK dominates, contributing the vast majority of total revenue. Among interna
 The top 10 products are dominated by decorative and gift items — consistent with a retailer serving both retail consumers and wholesale buyers. Each product bar includes its percentage share of total £10.24M revenue for immediate commercial context.
 
 
-### Stage 3 — RFM Customer Segmentation (K-Means Clustering)
+###3 — RFM Customer Segmentation (K-Means Clustering)
 
 RFM (Recency, Frequency, Monetary) analysis is the industry-standard framework for customer value segmentation. Each customer is scored across three dimensions:
 - **Recency** — days since last purchase (lower = more valuable)
@@ -132,7 +132,7 @@ RFM (Recency, Frequency, Monetary) analysis is the industry-standard framework f
 
 > **Critical analytical note:** The Champion segment (13 accounts, avg spend £125,707) is not a retail loyalty cohort — it is a **wholesale/B2B segment**. Average basket sizes of 4,226 items per order and individual account spend between £168K–£279K confirm procurement-cycle purchasing, not consumer behaviour. Applying loyalty programmes or discount campaigns to these accounts would be commercially inappropriate. They require dedicated account management, volume-based pricing, and supply reliability — not retail CRM tools.
 
-### Stage 4 — Cohort Retention Analysis
+###4 — Cohort Retention Analysis
 
 Cohort analysis groups customers by their **first purchase month** and tracks what percentage return in each subsequent month. This is the most direct measure of customer loyalty available from transaction data alone.
 
@@ -149,7 +149,7 @@ Cohort analysis groups customers by their **first purchase month** and tracks wh
 
 This is a structural weakness in post-purchase engagement, not an acquisition problem. The business can generate first purchases efficiently, but lacks the lifecycle infrastructure to convert them into long-term customer relationships.
 
-### Stage 5 — Basket Analysis by Customer Segment
+###5 — Basket Analysis by Customer Segment
 
 Average items per order broken down by RFM segment — validates the B2B nature of Champions and quantifies the cross-sell opportunity in the retail base.
 
@@ -165,7 +165,7 @@ The 23× difference in basket size between Champions and Hibernating customers c
 **Revenue concentration risk quantified:**
 A 10% churn rate across the 13 Champion accounts would result in an estimated **£163,000 revenue loss** (13 × 10% × £125,707 avg spend). This figure alone makes a compelling business case for dedicated account management investment.
 
-### Stage 6 — Product Affinity Analysis
+###6 — Product Affinity Analysis
 
 Identifies which products are **most frequently purchased together** in the same transaction — the data foundation for recommendation engines, bundle pricing, and inventory co-location decisions.
 
@@ -182,14 +182,14 @@ Identifies which products are **most frequently purchased together** in the same
 - **Regency Teacup and Saucer collections** show strong co-purchase behaviour across colour variants — prime candidates for multi-pack or collection pricing
 - The consistent, repeatable pairing patterns make this data directly usable as input for a recommendation engine deployed on any e-commerce platform
 
-### Stage 7 — Revenue Forecasting (Polynomial Regression)
+###7 — Revenue Forecasting (Polynomial Regression)
 
 The analysis extends beyond descriptive reporting into **predictive analytics** using a two-stage forecasting approach:
 
-**Stage 1 — Moving Average (trend smoothing):**
+**7.1 — Moving Average (trend smoothing):**
 A 3-month rolling average smooths short-term noise to reveal the underlying revenue direction. The moving average intentionally begins at Month 3 — it requires three data points to produce its first output value. This is a deliberate, methodologically sound implementation choice, not a gap in the data.
 
-**Stage 2 — Polynomial Regression:**
+**7.2 — Polynomial Regression:**
 - Features: `Time_Index` (sequential month number) and `Month` (calendar month, for seasonality capture)
 - Applied `PolynomialFeatures(degree=2)` to model the non-linear Q4 revenue acceleration
 - Trained `LinearRegression` on Dec 2010 – Nov 2011 data; December 2011 excluded to prevent incomplete month-end data from biasing the model
@@ -207,7 +207,7 @@ A 3-month rolling average smooths short-term noise to reveal the underlying reve
 
 The model correctly captures the Q4 seasonal peak and projects continued growth into Q1 2012 — directly supporting inventory procurement timelines and campaign launch decisions.
 
-### Stage 8 — Customer Conversion Funnel Analysis
+###8 — Customer Conversion Funnel Analysis
 
 A five-stage purchase lifecycle funnel built in **Plotly** (`go.Funnel`) to quantify conversion rates at each stage and identify where revenue opportunity is being lost.
 
@@ -223,7 +223,7 @@ The funnel was exported as `funnel.html` for direct embedding in Power BI dashbo
 **Most actionable finding:**
 30.6% of repeat customers become high-value, but only 74.9% of high-value customers reach Champion status — meaning **25.1% of high-spending customers are not purchasing frequently or recently enough** to be classified as Champions. These are the highest-priority customers for retention investment: they already spend heavily, but their engagement signals are weakening before they reach their peak value potential.
 
-### Stage 9 — Guest Customer Analysis
+###9 — Guest Customer Analysis
 
 Guest customers transact without registering — generating **£1.51M (14.7% of total revenue)** while remaining permanently invisible to every retention, loyalty, and remarketing system the business operates.
 
@@ -238,7 +238,7 @@ Guest customers transact without registering — generating **£1.51M (14.7% of 
 **Quantified conversion opportunity:**
 If just **20% of guest customers** could be converted to registered accounts at checkout, the business would gain visibility and retargetability over approximately **£302,000 in previously untrackable revenue** — enabling repeat purchase campaigns, churn prediction, and personalised marketing for those buyers.
 
-### Stage 10 — SQL Business Intelligence (MySQL 8.0)
+###10 — SQL Business Intelligence (MySQL 8.0)
 
 12 production-ready queries, each anchored to a stated business question with annotated window function logic:
 
